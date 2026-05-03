@@ -1,0 +1,2460 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kaiser Samsuzzaman Nilay — Finance Transformation Analyst</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #faf9f6;
+        --bg-warm: #f4f1eb;
+        --bg-card: #ffffff;
+        --bg-dark: #0f1923;
+        --bg-dark-card: #162231;
+        --border: #e2ddd5;
+        --border-light: #ece8e1;
+        --text: #1a1a1a;
+        --text-secondary: #5a5651;
+        --text-muted: #8a857e;
+        --text-light: #c4bfb7;
+        --accent: #1b5e3b;
+        --accent-light: #2a7d52;
+        --accent-pale: rgba(27, 94, 59, 0.06);
+        --accent-pale-2: rgba(27, 94, 59, 0.12);
+        --gold: #b8941f;
+        --gold-pale: rgba(184, 148, 31, 0.08);
+        --navy: #0f1923;
+        --serif: "Playfair Display", Georgia, serif;
+        --sans: "Outfit", -apple-system, sans-serif;
+        --mono: "IBM Plex Mono", monospace;
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+      body {
+        font-family: var(--sans);
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ─── PRELOADER ─── */
+      .preloader {
+        position: fixed;
+        inset: 0;
+        background: var(--bg-dark);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+        transition:
+          opacity 0.7s ease,
+          visibility 0.7s ease;
+      }
+      .preloader.done {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .preloader-icon {
+        width: 48px;
+        height: 48px;
+        position: relative;
+      }
+      .preloader-icon svg {
+        width: 100%;
+        height: 100%;
+        animation: preloaderSpin 2s linear infinite;
+      }
+      @keyframes preloaderSpin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .preloader-text {
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+      .preloader-bar {
+        width: 180px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .preloader-bar-fill {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, var(--accent-light), var(--gold));
+        animation: barFill 2s var(--ease-out) 0.2s forwards;
+      }
+      @keyframes barFill {
+        to {
+          width: 100%;
+        }
+      }
+
+      /* ─── NAV ─── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        padding: 18px 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(250, 249, 246, 0.85);
+        backdrop-filter: blur(24px) saturate(1.4);
+        border-bottom: 1px solid transparent;
+        transition: all 0.4s var(--ease-smooth);
+      }
+      nav.scrolled {
+        border-color: var(--border);
+        padding: 14px 48px;
+        box-shadow: 0 1px 30px rgba(0, 0, 0, 0.04);
+      }
+      .nav-logo {
+        font-family: var(--serif);
+        font-size: 1.3rem;
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .nav-logo span {
+        color: var(--accent);
+      }
+      .nav-links {
+        display: flex;
+        gap: 36px;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.82rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        position: relative;
+        transition: color 0.3s;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1.5px;
+        background: var(--accent);
+        transition: width 0.4s var(--ease-out);
+      }
+      .nav-links a:hover {
+        color: var(--text);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-cta {
+        padding: 10px 24px !important;
+        background: var(--accent) !important;
+        color: #fff !important;
+        border-radius: 6px !important;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s var(--ease-out);
+        border: none;
+        cursor: pointer;
+      }
+      .nav-cta::after {
+        display: none !important;
+      }
+      .nav-cta:hover {
+        background: var(--accent-light) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 24px rgba(27, 94, 59, 0.2);
+      }
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        flex-direction: column;
+        gap: 5px;
+        padding: 4px;
+      }
+      .nav-toggle span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--text);
+        transition: 0.3s;
+      }
+
+      /* ─── HERO ─── */
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding: 100px 48px 60px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg-pattern {
+        position: absolute;
+        inset: 0;
+        opacity: 0.35;
+        background-image:
+          linear-gradient(var(--border-light) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
+        background-size: 80px 80px;
+        mask-image: radial-gradient(
+          ellipse 60% 70% at 30% 50%,
+          black,
+          transparent
+        );
+      }
+      .hero-accent-line {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--border),
+          transparent
+        );
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        padding-right: 60px;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: var(--accent-pale);
+        border: 1px solid var(--accent-pale-2);
+        border-radius: 40px;
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+        opacity: 0;
+        transform: translateY(16px);
+        animation: fadeUp 0.7s var(--ease-out) 2.3s forwards;
+      }
+      .hero-badge .pulse {
+        width: 7px;
+        height: 7px;
+        background: var(--accent);
+        border-radius: 50%;
+        position: relative;
+      }
+      .hero-badge .pulse::after {
+        content: "";
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        border: 1.5px solid var(--accent);
+        animation: pulseRing 2s ease-out infinite;
+      }
+      @keyframes pulseRing {
+        0% {
+          transform: scale(1);
+          opacity: 0.6;
+        }
+        100% {
+          transform: scale(2.2);
+          opacity: 0;
+        }
+      }
+
+      .hero h1 {
+        font-family: var(--serif);
+        font-size: clamp(2.6rem, 5.2vw, 4.6rem);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+      .hero h1 .line {
+        display: block;
+        overflow: hidden;
+      }
+      .hero h1 .line span {
+        display: inline-block;
+        transform: translateY(110%);
+        animation: slideUp 0.9s var(--ease-out) forwards;
+      }
+      .hero h1 .line:nth-child(1) span {
+        animation-delay: 2.4s;
+      }
+      .hero h1 .line:nth-child(2) span {
+        animation-delay: 2.55s;
+      }
+      .hero h1 .line:nth-child(3) span {
+        animation-delay: 2.7s;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--accent);
+      }
+      @keyframes slideUp {
+        to {
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-subtitle {
+        font-family: var(--serif);
+        font-size: 1.2rem;
+        font-style: italic;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(16px);
+        animation: fadeUp 0.7s var(--ease-out) 2.85s forwards;
+      }
+      .hero-desc {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.75;
+        max-width: 480px;
+        margin-bottom: 36px;
+        opacity: 0;
+        transform: translateY(16px);
+        animation: fadeUp 0.7s var(--ease-out) 3s forwards;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        opacity: 0;
+        transform: translateY(16px);
+        animation: fadeUp 0.7s var(--ease-out) 3.15s forwards;
+      }
+      .hero-stats {
+        display: flex;
+        gap: 32px;
+        margin-top: 40px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+        opacity: 0;
+        transform: translateY(16px);
+        animation: fadeUp 0.7s var(--ease-out) 3.3s forwards;
+      }
+      .hero-stat-num {
+        font-family: var(--serif);
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
+      }
+      .hero-stat-label {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: 4px;
+      }
+
+      /* Hero Image */
+      .hero-image {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+        animation: heroImgIn 1s var(--ease-out) 2.6s forwards;
+      }
+      @keyframes heroImgIn {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .hero-img-wrapper {
+        position: relative;
+        width: 380px;
+        height: 460px;
+      }
+      .hero-img-frame {
+        position: absolute;
+        inset: 0;
+        border: 2px solid var(--accent);
+        border-radius: 12px;
+        transform: translate(12px, 12px);
+        opacity: 0.25;
+      }
+      .hero-img-main {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        background: var(--bg-warm);
+        border: 1px solid var(--border);
+      }
+      .hero-img-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+      }
+      .hero-img-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(160deg, var(--bg-warm), #e8e4dc);
+        gap: 12px;
+      }
+      .hero-img-placeholder .initials {
+        font-family: var(--serif);
+        font-size: 4.5rem;
+        font-weight: 700;
+        color: var(--accent);
+        opacity: 0.3;
+        line-height: 1;
+      }
+      .hero-img-placeholder .upload-hint {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        font-family: var(--mono);
+        letter-spacing: 0.04em;
+      }
+      .hero-img-badge {
+        position: absolute;
+        bottom: -16px;
+        left: -16px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 14px 18px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 3;
+      }
+      .hero-img-badge-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: var(--accent-pale);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .hero-img-badge-icon svg {
+        width: 18px;
+        height: 18px;
+        color: var(--accent);
+      }
+      .hero-img-badge-text {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--text);
+        line-height: 1.3;
+      }
+      .hero-img-badge-sub {
+        font-size: 0.68rem;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      /* ─── BTN ─── */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 28px;
+        font-family: var(--sans);
+        font-size: 0.88rem;
+        font-weight: 600;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: all 0.35s var(--ease-out);
+        cursor: pointer;
+        border: none;
+        letter-spacing: 0.01em;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--accent-light);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(27, 94, 59, 0.2);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--text);
+        border: 1.5px solid var(--border);
+      }
+      .btn-outline:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        transform: translateY(-2px);
+      }
+      .btn svg {
+        width: 15px;
+        height: 15px;
+        transition: transform 0.3s;
+      }
+      .btn:hover svg {
+        transform: translateX(3px);
+      }
+
+      /* ─── SECTIONS ─── */
+      section {
+        padding: 100px 48px;
+        position: relative;
+      }
+      .section-header {
+        margin-bottom: 60px;
+      }
+      .section-label {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--accent);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .section-label::before {
+        content: "";
+        width: 24px;
+        height: 1.5px;
+        background: var(--accent);
+      }
+      .section-title {
+        font-family: var(--serif);
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        letter-spacing: -0.015em;
+        font-weight: 600;
+        line-height: 1.15;
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+      .section-subtitle {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        max-width: 560px;
+        margin-top: 14px;
+      }
+
+      /* REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition:
+          opacity 0.7s var(--ease-out),
+          transform 0.7s var(--ease-out);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ─── ABOUT ─── */
+      #about {
+        background: var(--bg-warm);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+      .about-text p {
+        font-size: 0.98rem;
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 16px;
+      }
+      .about-text p strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .about-highlights {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 32px;
+      }
+      .highlight-card {
+        padding: 20px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        transition: all 0.35s var(--ease-out);
+      }
+      .highlight-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
+        border-color: var(--accent-pale-2);
+      }
+      .highlight-icon {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+      .highlight-num {
+        font-family: var(--serif);
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .highlight-label {
+        font-size: 0.76rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-top: 2px;
+      }
+
+      .about-info-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .info-card {
+        padding: 24px 28px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        transition: all 0.35s var(--ease-out);
+      }
+      .info-card:hover {
+        border-color: var(--accent-pale-2);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      }
+      .info-card-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 1.2rem;
+      }
+      .info-card-icon.green {
+        background: var(--accent-pale);
+      }
+      .info-card-icon.gold {
+        background: var(--gold-pale);
+      }
+      .info-card h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .info-card p {
+        font-size: 0.84rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* ─── SKILLS ─── */
+      .skills-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+      }
+      .skills-column h3 {
+        font-family: var(--serif);
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .skills-column h3 span {
+        font-size: 0.65rem;
+        font-family: var(--mono);
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .skill-item {
+        margin-bottom: 18px;
+      }
+      .skill-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+      .skill-name {
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--text);
+      }
+      .skill-level {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--accent);
+        font-weight: 500;
+      }
+      .skill-bar {
+        height: 6px;
+        background: var(--border-light);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .skill-bar-fill {
+        height: 100%;
+        border-radius: 6px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        width: 0;
+        transition: width 1.2s var(--ease-out);
+      }
+      .reveal.visible .skill-bar-fill {
+        width: var(--w);
+      }
+
+      .tools-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .tool-tag {
+        padding: 8px 16px;
+        background: var(--bg-warm);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        transition: all 0.3s var(--ease-out);
+        cursor: default;
+      }
+      .tool-tag:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: var(--accent-pale);
+      }
+
+      /* ─── EXPERIENCE ─── */
+      #experience {
+        background: var(--bg-dark);
+        color: #fff;
+      }
+      #experience .section-label {
+        color: var(--gold);
+      }
+      #experience .section-label::before {
+        background: var(--gold);
+      }
+      #experience .section-title {
+        color: #fff;
+      }
+      #experience .section-title em {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .exp-layout {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 40px;
+        align-items: start;
+      }
+      .exp-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .exp-sidebar {
+        position: sticky;
+        top: 120px;
+      }
+      .exp-sidebar-card {
+        background: var(--bg-dark-card);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 32px;
+        margin-bottom: 20px;
+      }
+      .exp-sidebar-card h4 {
+        font-family: var(--serif);
+        font-size: 1rem;
+        color: #fff;
+        margin-bottom: 20px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .exp-sidebar-card h4::before {
+        content: "";
+        width: 16px;
+        height: 1.5px;
+        background: var(--gold);
+      }
+      .exp-sidebar-stat {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .exp-sidebar-stat:last-child {
+        border-bottom: none;
+      }
+      .exp-sidebar-stat-label {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .exp-sidebar-stat-val {
+        font-family: var(--serif);
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--gold);
+      }
+      .exp-timeline-mini {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .exp-timeline-mini-item {
+        padding: 16px 0 16px 24px;
+        position: relative;
+        border-left: 1.5px solid rgba(255, 255, 255, 0.08);
+      }
+      .exp-timeline-mini-item:last-child {
+        border-left-color: transparent;
+      }
+      .exp-timeline-mini-item::before {
+        content: "";
+        position: absolute;
+        left: -5px;
+        top: 20px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--bg-dark);
+        border: 2px solid var(--accent-light);
+      }
+      .exp-timeline-mini-item.active::before {
+        background: var(--accent-light);
+        box-shadow: 0 0 12px rgba(42, 125, 82, 0.4);
+      }
+      .exp-mini-year {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        color: var(--gold);
+        letter-spacing: 0.06em;
+        margin-bottom: 4px;
+      }
+      .exp-mini-role {
+        font-size: 0.84rem;
+        color: #fff;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .exp-mini-co {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.35);
+        margin-top: 2px;
+      }
+      .exp-sidebar-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 4px;
+      }
+      .exp-sidebar-tag {
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        padding: 5px 10px;
+        border-radius: 6px;
+        background: rgba(27, 94, 59, 0.1);
+        color: var(--accent-light);
+        border: 1px solid rgba(27, 94, 59, 0.15);
+      }
+      @media (max-width: 1024px) {
+        .exp-layout {
+          grid-template-columns: 1fr;
+        }
+        .exp-sidebar {
+          position: static;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+        }
+      }
+      @media (max-width: 768px) {
+        .exp-sidebar {
+          grid-template-columns: 1fr;
+        }
+      }
+      .exp-card {
+        background: var(--bg-dark-card);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 36px 40px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s var(--ease-out);
+      }
+      .exp-card:hover {
+        border-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-3px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+      .exp-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent-light), var(--gold));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s var(--ease-out);
+      }
+      .exp-card:hover::before {
+        transform: scaleX(1);
+      }
+      .exp-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .exp-card-date {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        color: var(--gold);
+        letter-spacing: 0.06em;
+        padding: 6px 14px;
+        background: rgba(184, 148, 31, 0.08);
+        border-radius: 20px;
+      }
+      .exp-card h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #fff;
+      }
+      .exp-card .company {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.45);
+        margin-top: 2px;
+      }
+      .exp-card-body {
+        margin-top: 16px;
+      }
+      .exp-card-body li {
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.7;
+        margin-bottom: 8px;
+        padding-left: 18px;
+        position: relative;
+        list-style: none;
+      }
+      .exp-card-body li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 9px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-light);
+        opacity: 0.6;
+      }
+      .exp-metrics {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        flex-wrap: wrap;
+      }
+      .exp-metric {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .exp-metric-val {
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--gold);
+      }
+      .exp-metric-label {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      /* ─── EDUCATION ─── */
+      .edu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
+      }
+      .edu-card {
+        padding: 28px 32px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s var(--ease-out);
+      }
+      .edu-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+        border-color: var(--accent-pale-2);
+      }
+      .edu-card-accent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(to bottom, var(--accent), var(--gold));
+      }
+      .edu-card .degree {
+        font-family: var(--serif);
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .edu-card .school {
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+      }
+      .edu-card .edu-meta {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .edu-tag {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .edu-tag svg {
+        width: 12px;
+        height: 12px;
+        opacity: 0.5;
+      }
+
+      /* ─── SERVICES ─── */
+      #services {
+        background: var(--bg-warm);
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+      }
+      .service-card {
+        padding: 32px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        transition: all 0.4s var(--ease-out);
+        position: relative;
+        overflow: hidden;
+      }
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.06);
+        border-color: var(--accent-pale-2);
+      }
+      .service-num {
+        font-family: var(--serif);
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--accent);
+        opacity: 0.12;
+        position: absolute;
+        top: 16px;
+        right: 24px;
+        line-height: 1;
+      }
+      .service-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: var(--accent-pale);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        font-size: 1.3rem;
+      }
+      .service-card h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .service-card p {
+        font-size: 0.86rem;
+        color: var(--text-secondary);
+        line-height: 1.65;
+      }
+
+      /* ─── CONTACT ─── */
+      #contact {
+        background: var(--bg-dark);
+        color: #fff;
+      }
+      #contact .section-label {
+        color: var(--gold);
+        justify-content: center;
+      }
+      #contact .section-label::before {
+        background: var(--gold);
+      }
+      #contact .section-title {
+        color: #fff;
+        text-align: center;
+      }
+      #contact .section-title em {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      #contact .section-subtitle {
+        color: rgba(255, 255, 255, 0.5);
+        text-align: center;
+        margin: 14px auto 0;
+      }
+      .contact-center {
+        text-align: center;
+      }
+      .contact-cards {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 48px;
+        flex-wrap: wrap;
+      }
+      .contact-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px 28px;
+        background: var(--bg-dark-card);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.4s var(--ease-out);
+        min-width: 220px;
+      }
+      .contact-card:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      }
+      .contact-card-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .contact-card-icon.email-icon {
+        background: rgba(27, 94, 59, 0.15);
+      }
+      .contact-card-icon.linkedin-icon {
+        background: rgba(0, 119, 181, 0.15);
+      }
+      .contact-card-icon.phone-icon {
+        background: rgba(184, 148, 31, 0.12);
+      }
+      .contact-card-icon.loc-icon {
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .contact-card-icon svg {
+        width: 18px;
+        height: 18px;
+      }
+      .contact-card-label {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.35);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-family: var(--mono);
+      }
+      .contact-card-value {
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-top: 2px;
+      }
+
+      /* ─── FOOTER ─── */
+      footer {
+        padding: 28px 48px;
+        background: var(--bg-dark);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      footer a {
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      footer a:hover {
+        color: var(--gold);
+      }
+
+      /* ─── RESUME DOWNLOAD ─── */
+      .nav-resume {
+        color: var(--accent) !important;
+        font-weight: 600 !important;
+      }
+      .nav-resume:hover {
+        color: var(--accent-light) !important;
+      }
+      .btn-download svg {
+        transition: transform 0.3s var(--ease-out);
+      }
+      .btn-download:hover svg {
+        transform: translateY(3px) !important;
+      }
+
+      /* ─── MARQUEE ─── */
+      .marquee-section {
+        padding: 28px 0;
+        overflow: hidden;
+        background: var(--accent);
+        position: relative;
+      }
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marquee 35s linear infinite;
+      }
+      .marquee-item {
+        font-family: var(--sans);
+        font-size: 0.8rem;
+        font-weight: 600;
+        white-space: nowrap;
+        padding: 0 24px;
+        color: rgba(255, 255, 255, 0.85);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+      .marquee-item .sep {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.35);
+      }
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 1024px) {
+        section {
+          padding: 80px 32px;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 48px;
+          padding: 100px 32px 60px;
+        }
+        .hero-content {
+          padding-right: 0;
+          order: 2;
+        }
+        .hero-image {
+          order: 1;
+          justify-content: center;
+        }
+        .hero-img-wrapper {
+          width: 280px;
+          height: 340px;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+        .skills-layout {
+          grid-template-columns: 1fr;
+        }
+        nav {
+          padding: 16px 28px;
+        }
+        footer {
+          padding: 24px 28px;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-links {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--bg-card);
+          padding: 0 28px;
+          border-bottom: 1px solid var(--border);
+          gap: 0;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+          max-height: 0;
+          overflow: hidden;
+          transition:
+            max-height 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+            padding 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .nav-links.open {
+          max-height: 500px;
+          padding: 24px 28px;
+        }
+        .nav-links li {
+          opacity: 0;
+          transform: translateY(12px);
+          transition:
+            opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .nav-links.open li {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .nav-links.open li:nth-child(1) {
+          transition-delay: 0.1s;
+        }
+        .nav-links.open li:nth-child(2) {
+          transition-delay: 0.18s;
+        }
+        .nav-links.open li:nth-child(3) {
+          transition-delay: 0.26s;
+        }
+        .nav-links.open li:nth-child(4) {
+          transition-delay: 0.34s;
+        }
+        .nav-links.open li:nth-child(5) {
+          transition-delay: 0.42s;
+        }
+        .nav-links.open li:nth-child(6) {
+          transition-delay: 0.5s;
+        }
+        .nav-links.open li:nth-child(7) {
+          transition-delay: 0.58s;
+        }
+        .nav-links li {
+          padding: 10px 0;
+          border-bottom: 1px solid var(--border-light);
+        }
+        .nav-links li:last-child {
+          border-bottom: none;
+          padding-top: 14px;
+        }
+        .nav-toggle {
+          display: flex;
+        }
+        .nav-toggle span {
+          transition:
+            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 0.3s ease;
+        }
+        .nav-toggle.active span:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+        .nav-toggle.active span:nth-child(2) {
+          opacity: 0;
+          transform: scaleX(0);
+        }
+        .nav-toggle.active span:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+        section {
+          padding: 60px 20px;
+        }
+        .hero {
+          padding: 80px 20px 40px;
+          min-height: auto;
+        }
+        .hero-img-wrapper {
+          width: 220px;
+          height: 270px;
+        }
+        .hero-stats {
+          gap: 20px;
+        }
+        .hero-stat-num {
+          font-size: 1.5rem;
+        }
+        .exp-card {
+          padding: 24px;
+        }
+        .exp-card-header {
+          flex-direction: column;
+        }
+        .contact-cards {
+          flex-direction: column;
+          align-items: center;
+        }
+        .about-highlights {
+          grid-template-columns: 1fr 1fr;
+        }
+        footer {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+      }
+      @media (max-width: 480px) {
+        .hero-cta {
+          flex-direction: column;
+        }
+        .hero-cta .btn {
+          justify-content: center;
+        }
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .edu-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-highlights {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+      <div class="preloader-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="rgba(255,255,255,.5)"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        >
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+        </svg>
+      </div>
+      <div class="preloader-text">Loading Portfolio</div>
+      <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+    </div>
+
+    <!-- NAV -->
+    <nav id="mainNav">
+      <a href="#" class="nav-logo">Kaiser<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#services">Services</a></li>
+        <li>
+          <a href="kaiser_resume.pdf" download class="nav-resume"
+            >Resume
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="
+                width: 13px;
+                height: 13px;
+                vertical-align: -2px;
+                margin-left: 2px;
+              "
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" /></svg
+          ></a>
+        </li>
+        <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg-pattern"></div>
+      <div class="hero-accent-line"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <div class="pulse"></div>
+          Available for Opportunities
+        </div>
+        <h1>
+          <div class="line"><span>Finance</span></div>
+          <div class="line"><span>Transformation</span></div>
+          <div class="line">
+            <span><em>Analyst</em></span>
+          </div>
+        </h1>
+        <p class="hero-subtitle">Kaiser Samsuzzaman Nilay</p>
+        <p class="hero-desc">
+          Results-driven analyst skilled in financial data validation,
+          reporting, and advanced analytics. Expert in data modeling, processing
+          10M+ rows, and delivering actionable insights via dynamic dashboards.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">
+            Get In Touch
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="kaiser_resume.pdf"
+            download
+            class="btn btn-outline btn-download"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download Resume
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">10M+</div>
+            <div class="hero-stat-label">Rows Processed</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">150+</div>
+            <div class="hero-stat-label">Clients Served</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">98%</div>
+            <div class="hero-stat-label">Client Satisfaction</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="hero-img-wrapper">
+          <div class="hero-img-frame"></div>
+          <div class="hero-img-main">
+            <!-- ✏️ REPLACE THIS PLACEHOLDER WITH YOUR PHOTO:
+             Delete the div.hero-img-placeholder below and add:
+             <img src="your-photo.jpg" alt="Kaiser Samsuzzaman Nilay"> -->
+            <div class="hero-img-placeholder">
+              <div class="initials">KN</div>
+              <div class="upload-hint">[ Add your photo here ]</div>
+            </div>
+          </div>
+          <div class="hero-img-badge">
+            <div class="hero-img-badge-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+            </div>
+            <div>
+              <div class="hero-img-badge-text">Data Crafters</div>
+              <div class="hero-img-badge-sub">Finance Analyst</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-section">
+      <div class="marquee-track">
+        <div class="marquee-item">
+          Power BI <span class="sep"></span> Excel
+          <span class="sep"></span> Power Query
+          <span class="sep"></span> Financial Reporting
+          <span class="sep"></span> Data Modeling <span class="sep"></span> KPI
+          Dashboards <span class="sep"></span> Variance Analysis
+          <span class="sep"></span> SharePoint <span class="sep"></span> Data
+          Cleansing <span class="sep"></span> Business Intelligence
+          <span class="sep"></span>
+        </div>
+        <div class="marquee-item">
+          Power BI <span class="sep"></span> Excel
+          <span class="sep"></span> Power Query
+          <span class="sep"></span> Financial Reporting
+          <span class="sep"></span> Data Modeling <span class="sep"></span> KPI
+          Dashboards <span class="sep"></span> Variance Analysis
+          <span class="sep"></span> SharePoint <span class="sep"></span> Data
+          Cleansing <span class="sep"></span> Business Intelligence
+          <span class="sep"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="section-header">
+            <div class="section-label">About Me</div>
+            <h2 class="section-title">
+              Turning raw data into<br /><em>financial clarity</em>
+            </h2>
+          </div>
+          <div class="about-text">
+            <p>
+              I'm <strong>Kaiser Samsuzzaman Nilay</strong>, a Finance
+              Transformation Analyst based in Dhaka, Bangladesh. With a
+              Bachelor's in Finance and Banking from International Islamic
+              University Chittagong, I specialize in turning complex financial
+              datasets into actionable business intelligence.
+            </p>
+            <p>
+              Currently at <strong>Data Crafters</strong>, I execute large-scale
+              financial data validation and cleansing exceeding 10 million rows,
+              build comprehensive Power BI financial reporting templates, and
+              deliver executive-focused KPI insights aligned with C-suite
+              strategic decisions.
+            </p>
+            <p>
+              My banking internship at
+              <strong>Islami Bank Bangladesh PLC</strong> strengthened my
+              foundation in regulatory compliance, financial services, and
+              client-centric operations — managing 150+ client accounts with 98%
+              satisfaction.
+            </p>
+          </div>
+          <div class="about-highlights">
+            <div class="highlight-card">
+              <div class="highlight-icon">📊</div>
+              <div class="highlight-num">10M+</div>
+              <div class="highlight-label">Rows Processed</div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-icon">📋</div>
+              <div class="highlight-num">500+</div>
+              <div class="highlight-label">Documents Verified</div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-icon">🏦</div>
+              <div class="highlight-num">150+</div>
+              <div class="highlight-label">Clients Managed</div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-icon">⏱️</div>
+              <div class="highlight-num">15%</div>
+              <div class="highlight-label">Efficiency Improved</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-info-cards reveal" style="transition-delay: 0.15s">
+          <div class="info-card">
+            <div class="info-card-icon green">🎯</div>
+            <div>
+              <h4>Core Focus</h4>
+              <p>
+                Financial data validation, automated reporting, data modeling,
+                and delivering executive-level KPI dashboards with Power BI and
+                Excel.
+              </p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon gold">💡</div>
+            <div>
+              <h4>What Sets Me Apart</h4>
+              <p>
+                I bridge the gap between raw financial data and strategic
+                business decisions — combining banking domain expertise with
+                advanced analytics capabilities.
+              </p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon green">📈</div>
+            <div>
+              <h4>Key Deliverables</h4>
+              <p>
+                Income Statements, Balance Sheets, Cash Flow reports, AR/AP
+                tracking, performance dashboards, and automated financial
+                reporting systems.
+              </p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-icon gold">🤝</div>
+            <div>
+              <h4>Approach</h4>
+              <p>
+                Meticulous data integrity with thorough documentation, data
+                dictionaries, and transparent analytical models — built for
+                stakeholder trust.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-header reveal">
+        <div class="section-label">Technical Expertise</div>
+        <h2 class="section-title">Skills & <em>Competencies</em></h2>
+        <p class="section-subtitle">
+          A deep toolkit spanning analytics platforms, financial modeling, and
+          data transformation technologies.
+        </p>
+      </div>
+      <div class="skills-layout">
+        <div class="reveal">
+          <h3 class="skills-column">
+            Analytics & Reporting <span>// Proficiency</span>
+          </h3>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Power BI (DAX, Dashboards, KPI)</span
+              ><span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="--w: 92%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Microsoft Excel (Advanced)</span
+              ><span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="--w: 95%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Power Query / Data Modeling</span
+              ><span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="--w: 88%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Financial Reporting & Analysis</span
+              ><span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="--w: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">Data Validation & Cleansing</span
+              ><span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="--w: 93%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row">
+              <span class="skill-name">SharePoint / Power BI Service</span
+              ><span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="--w: 72%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay: 0.15s">
+          <h3 class="skills-column">
+            Tools & Technologies <span>// Stack</span>
+          </h3>
+          <div class="tools-grid">
+            <span class="tool-tag">Power BI Desktop</span>
+            <span class="tool-tag">Power BI Service</span>
+            <span class="tool-tag">Power Query</span>
+            <span class="tool-tag">DAX</span>
+            <span class="tool-tag">Excel (VLOOKUP, Pivot)</span>
+            <span class="tool-tag">SharePoint</span>
+            <span class="tool-tag">SQL</span>
+            <span class="tool-tag">Data Modeling</span>
+            <span class="tool-tag">ETL Pipelines</span>
+            <span class="tool-tag">Financial Statements</span>
+            <span class="tool-tag">Variance Analysis</span>
+            <span class="tool-tag">Budgeting</span>
+            <span class="tool-tag">KPI Frameworks</span>
+            <span class="tool-tag">Balance Sheet Analysis</span>
+            <span class="tool-tag">Cash Flow Reporting</span>
+            <span class="tool-tag">Accounts Receivable</span>
+            <span class="tool-tag">Accounts Payable</span>
+            <span class="tool-tag">Data Dictionaries</span>
+            <span class="tool-tag">Regulatory Compliance</span>
+            <span class="tool-tag">Business Intelligence</span>
+          </div>
+          <h3 class="skills-column" style="margin-top: 36px">
+            Domain Knowledge <span>// Finance</span>
+          </h3>
+          <div class="tools-grid">
+            <span class="tool-tag">Income Statement (IS)</span>
+            <span class="tool-tag">Balance Sheet (BS)</span>
+            <span class="tool-tag">Cash Flow (CF)</span>
+            <span class="tool-tag">AR & AP Management</span>
+            <span class="tool-tag">Regulatory Compliance</span>
+            <span class="tool-tag">Banking Operations</span>
+            <span class="tool-tag">Client Transformation</span>
+            <span class="tool-tag">Performance Metrics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-header reveal">
+        <div class="section-label">Work Experience</div>
+        <h2 class="section-title">Professional <em>Journey</em></h2>
+      </div>
+      <div class="exp-layout">
+        <div class="exp-cards">
+          <div class="exp-card reveal">
+            <div class="exp-card-header">
+              <div>
+                <h3>Junior Finance Transformation Analyst</h3>
+                <div class="company">Data Crafters — Dhaka, Bangladesh</div>
+              </div>
+              <div class="exp-card-date">Nov 2024 — Present</div>
+            </div>
+            <div class="exp-card-body">
+              <ul>
+                <li>
+                  Executed large-scale financial data validation and cleansing
+                  exceeding 10 million rows, ensuring high data accuracy for
+                  client reporting.
+                </li>
+                <li>
+                  Utilized Excel and Power Query to standardize and merge
+                  fragmented datasets into clean, analysis-ready data models.
+                </li>
+                <li>
+                  Developed comprehensive Power BI financial reporting templates
+                  — Income Statement, Balance Sheet, Cash Flow, AR, and AP.
+                </li>
+                <li>
+                  Built and optimized robust data models within Power BI for key
+                  performance indicator (KPI) tracking and performance analysis.
+                </li>
+                <li>
+                  Conducted monthly balance sheet breakdown analyses,
+                  pinpointing mismatches across assets, liabilities, and equity.
+                </li>
+                <li>
+                  Enhanced transparency of analytical models by documenting data
+                  dictionaries and detailed table descriptions.
+                </li>
+                <li>
+                  Collaborated on client transformation projects, implementing
+                  reporting automation using Power BI Service and SharePoint.
+                </li>
+                <li>
+                  Delivered executive-focused KPI insights and analytical
+                  frameworks aligned with COO-level strategic questions.
+                </li>
+              </ul>
+            </div>
+            <div class="exp-metrics">
+              <div class="exp-metric">
+                <div class="exp-metric-val">10M+</div>
+                <div class="exp-metric-label">Rows Processed</div>
+              </div>
+              <div class="exp-metric">
+                <div class="exp-metric-val">5+</div>
+                <div class="exp-metric-label">Report Templates</div>
+              </div>
+              <div class="exp-metric">
+                <div class="exp-metric-val">C-Suite</div>
+                <div class="exp-metric-label">Level Insights</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card reveal" style="transition-delay: 0.15s">
+            <div class="exp-card-header">
+              <div>
+                <h3>Banking Intern</h3>
+                <div class="company">
+                  Islami Bank Bangladesh PLC — Chittagong, Bangladesh
+                </div>
+              </div>
+              <div class="exp-card-date">Jul 2023 — Dec 2023</div>
+            </div>
+            <div class="exp-card-body">
+              <ul>
+                <li>
+                  Managed financial services, documentation, and account
+                  administration for 150+ clients, ensuring smooth operations.
+                </li>
+                <li>
+                  Processed and verified 500+ regulatory and audit documents
+                  with 100% accuracy, maintaining compliance.
+                </li>
+                <li>
+                  Executed daily financial transactions and performed account
+                  reconciliations in line with accounting standards.
+                </li>
+                <li>
+                  Maintained 98% client satisfaction through accurate service
+                  delivery and cross-functional coordination.
+                </li>
+                <li>
+                  Collaborated with 10+ team members to improve branch
+                  efficiency, reducing average client waiting time by 15%.
+                </li>
+                <li>
+                  Supported a branch initiative that increased client retention
+                  by 12% using insights from data analysis.
+                </li>
+              </ul>
+            </div>
+            <div class="exp-metrics">
+              <div class="exp-metric">
+                <div class="exp-metric-val">150+</div>
+                <div class="exp-metric-label">Clients Served</div>
+              </div>
+              <div class="exp-metric">
+                <div class="exp-metric-val">500+</div>
+                <div class="exp-metric-label">Documents Processed</div>
+              </div>
+              <div class="exp-metric">
+                <div class="exp-metric-val">98%</div>
+                <div class="exp-metric-label">Satisfaction Rate</div>
+              </div>
+              <div class="exp-metric">
+                <div class="exp-metric-val">12%</div>
+                <div class="exp-metric-label">Retention Increase</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="exp-sidebar">
+          <div class="exp-sidebar-card reveal" style="transition-delay: 0.2s">
+            <h4>Career Snapshot</h4>
+            <div class="exp-sidebar-stat">
+              <span class="exp-sidebar-stat-label">Total Experience</span>
+              <span class="exp-sidebar-stat-val">1.5+ Yrs</span>
+            </div>
+            <div class="exp-sidebar-stat">
+              <span class="exp-sidebar-stat-label">Companies</span>
+              <span class="exp-sidebar-stat-val">2</span>
+            </div>
+            <div class="exp-sidebar-stat">
+              <span class="exp-sidebar-stat-label">Roles Held</span>
+              <span class="exp-sidebar-stat-val">2</span>
+            </div>
+            <div class="exp-sidebar-stat">
+              <span class="exp-sidebar-stat-label">Data Processed</span>
+              <span class="exp-sidebar-stat-val">10M+ Rows</span>
+            </div>
+            <div class="exp-sidebar-stat">
+              <span class="exp-sidebar-stat-label">Client Satisfaction</span>
+              <span class="exp-sidebar-stat-val">98%</span>
+            </div>
+            <div class="exp-sidebar-stat">
+              <span class="exp-sidebar-stat-label">Docs Verified</span>
+              <span class="exp-sidebar-stat-val">500+</span>
+            </div>
+          </div>
+
+          <div class="exp-sidebar-card reveal" style="transition-delay: 0.3s">
+            <h4>Career Timeline</h4>
+            <div class="exp-timeline-mini">
+              <div class="exp-timeline-mini-item active">
+                <div class="exp-mini-year">2024 — Present</div>
+                <div class="exp-mini-role">Finance Transformation Analyst</div>
+                <div class="exp-mini-co">Data Crafters</div>
+              </div>
+              <div class="exp-timeline-mini-item">
+                <div class="exp-mini-year">2023 — 2023</div>
+                <div class="exp-mini-role">Banking Intern</div>
+                <div class="exp-mini-co">Islami Bank Bangladesh PLC</div>
+              </div>
+              <div class="exp-timeline-mini-item">
+                <div class="exp-mini-year">2019 — 2024</div>
+                <div class="exp-mini-role">B.Sc. Finance & Banking</div>
+                <div class="exp-mini-co">IIUC, Chittagong</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-sidebar-card reveal" style="transition-delay: 0.4s">
+            <h4>Core Tools Used</h4>
+            <div class="exp-sidebar-tags">
+              <span class="exp-sidebar-tag">Power BI</span>
+              <span class="exp-sidebar-tag">Excel</span>
+              <span class="exp-sidebar-tag">Power Query</span>
+              <span class="exp-sidebar-tag">DAX</span>
+              <span class="exp-sidebar-tag">SharePoint</span>
+              <span class="exp-sidebar-tag">SQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-header reveal">
+        <div class="section-label">Education</div>
+        <h2 class="section-title">Academic <em>Background</em></h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card reveal">
+          <div class="edu-card-accent"></div>
+          <div class="degree">Bachelor in Finance and Banking</div>
+          <div class="school">International Islamic University Chittagong</div>
+          <div class="edu-meta">
+            <span class="edu-tag">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Chittagong, Bangladesh
+            </span>
+            <span class="edu-tag">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              2019 — 2024
+            </span>
+            <span class="edu-tag" style="color: var(--accent); font-weight: 500"
+              >CGPA 3.47 / 4.0</span
+            >
+          </div>
+        </div>
+        <div class="edu-card reveal" style="transition-delay: 0.1s">
+          <div class="edu-card-accent"></div>
+          <div class="degree">H.S.C. in Business Studies</div>
+          <div class="school">
+            Uttar Kattali Alhaj Mostafa Hakim Degree College
+          </div>
+          <div class="edu-meta">
+            <span class="edu-tag">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Chittagong, Bangladesh
+            </span>
+            <span class="edu-tag">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              2016 — 2018
+            </span>
+          </div>
+        </div>
+        <div class="edu-card reveal" style="transition-delay: 0.2s">
+          <div class="edu-card-accent"></div>
+          <div class="degree">S.S.C. in Science</div>
+          <div class="school">Ispahani Adarsha High School</div>
+          <div class="edu-meta">
+            <span class="edu-tag">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Chittagong, Bangladesh
+            </span>
+            <span class="edu-tag">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              2005 — 2016
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-header reveal">
+        <div class="section-label">What I Do</div>
+        <h2 class="section-title">Services & <em>Capabilities</em></h2>
+        <p class="section-subtitle">
+          End-to-end financial data solutions — from raw data to executive
+          insights.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <div class="service-icon">📊</div>
+          <h3>Financial Dashboard Development</h3>
+          <p>
+            Custom Power BI dashboards for Income Statements, Balance Sheets,
+            Cash Flow, and KPI tracking tailored to executive decision-making.
+          </p>
+        </div>
+        <div class="service-card reveal" style="transition-delay: 0.1s">
+          <div class="service-num">02</div>
+          <div class="service-icon">🔄</div>
+          <h3>Data Transformation & Cleansing</h3>
+          <p>
+            Large-scale financial data validation, deduplication, and
+            standardization — processing millions of rows for clean,
+            analysis-ready datasets.
+          </p>
+        </div>
+        <div class="service-card reveal" style="transition-delay: 0.2s">
+          <div class="service-num">03</div>
+          <div class="service-icon">📑</div>
+          <h3>Automated Financial Reporting</h3>
+          <p>
+            Building automated reporting pipelines using Power BI Service and
+            SharePoint, eliminating manual work and ensuring timely delivery.
+          </p>
+        </div>
+        <div class="service-card reveal" style="transition-delay: 0.1s">
+          <div class="service-num">04</div>
+          <div class="service-icon">🎯</div>
+          <h3>KPI & Performance Analysis</h3>
+          <p>
+            Designing analytical frameworks and KPI models that directly address
+            strategic questions from senior management and C-suite executives.
+          </p>
+        </div>
+        <div class="service-card reveal" style="transition-delay: 0.2s">
+          <div class="service-num">05</div>
+          <div class="service-icon">🏦</div>
+          <h3>Financial Integrity Auditing</h3>
+          <p>
+            Monthly balance sheet breakdowns, variance analysis, and
+            reconciliation — ensuring complete accuracy across assets,
+            liabilities, and equity.
+          </p>
+        </div>
+        <div class="service-card reveal" style="transition-delay: 0.3s">
+          <div class="service-num">06</div>
+          <div class="service-icon">📖</div>
+          <h3>Data Documentation & Governance</h3>
+          <p>
+            Comprehensive data dictionaries, table descriptions, and model
+            documentation that ensures transparency and stakeholder trust.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="contact-center">
+        <div class="section-header reveal" style="text-align: center">
+          <div class="section-label" style="justify-content: center">
+            Get In Touch
+          </div>
+          <h2 class="section-title">Let's work <em>together</em></h2>
+          <p class="section-subtitle">
+            I'm open to full-time opportunities, freelance projects, and
+            collaborations in financial analytics and data transformation.
+          </p>
+        </div>
+        <div class="contact-cards reveal" style="transition-delay: 0.15s">
+          <a href="mailto:kaiserniloy@gmail.com" class="contact-card">
+            <div class="contact-card-icon email-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#1b5e3b"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-card-label">Email</div>
+              <div class="contact-card-value">kaiserniloy@gmail.com</div>
+            </div>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/kaiser-samsuzzaman-nilay/"
+            target="_blank"
+            class="contact-card"
+          >
+            <div class="contact-card-icon linkedin-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#0077b5"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"
+                />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-card-label">LinkedIn</div>
+              <div class="contact-card-value">kaiser-samsuzzaman-nilay</div>
+            </div>
+          </a>
+          <a href="tel:+8801813090747" class="contact-card">
+            <div class="contact-card-icon phone-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#b8941f"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-card-label">Phone</div>
+              <div class="contact-card-value">+880 1813-090747</div>
+            </div>
+          </a>
+          <div class="contact-card" style="cursor: default">
+            <div class="contact-card-icon loc-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgba(255,255,255,.5)"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-card-label">Location</div>
+              <div class="contact-card-value">Mohakhali, Dhaka, BD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>&copy; 2026 Kaiser Samsuzzaman Nilay. All rights reserved.</span>
+      <a href="#" style="font-family: var(--serif); font-size: 0.9rem"
+        >Kaiser<span style="color: var(--gold)">.</span></a
+      >
+      <span>Finance Transformation Analyst</span>
+    </footer>
+
+    <script>
+      // Preloader
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.getElementById("preloader").classList.add("done");
+        }, 2200);
+      });
+
+      // Nav scroll
+      const nav = document.getElementById("mainNav");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      // Mobile nav
+      const navToggle = document.getElementById("navToggle");
+      const navLinksEl = document.getElementById("navLinks");
+      navToggle.addEventListener("click", () => {
+        navToggle.classList.toggle("active");
+        navLinksEl.classList.toggle("open");
+      });
+      document.querySelectorAll(".nav-links a").forEach((a) => {
+        a.addEventListener("click", () => {
+          navLinksEl.classList.remove("open");
+          navToggle.classList.remove("active");
+        });
+      });
+
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const t = document.querySelector(this.getAttribute("href"));
+          if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      // Parallax subtle on hero
+      window.addEventListener("scroll", () => {
+        const s = window.scrollY;
+        const hero = document.querySelector(".hero-image");
+        if (hero && s < 800) {
+          hero.style.transform = `translateY(${s * 0.08}px)`;
+        }
+      });
+    </script>
+  </body>
+</html>
